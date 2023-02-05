@@ -32,6 +32,7 @@ else
 }
 
 mysqli_close($conn);
+
 sleep(3);
 header("Location: index.php");
 exit;
