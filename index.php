@@ -2,9 +2,11 @@
 <head>
     <title>shopify</title>
     <style>
-        h1 {
-      text-align: center;
-    }
+h1 {
+  font-weight: bold;
+  text-align: center;
+  font-size: 64px;
+}
         body {
             font-family: Arial, sans-serif;
         }
