@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<head>
+    <title>shopify</title>
+</head>
+<body>
+
+
+<form action="add.php" method="post">
+Name: <input type="text" name="name"><br>
+price: <input type="number" name="price"><br>
+qte: <input type="number" name="qte"><br>
+<input type="submit">
 <?php
 $servername = "localhost";
 $username = "root";
@@ -11,14 +23,32 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO produit (id, name, price, qte) VALUES (NULL, 'pizza', 1.11, 1)";
+$sql = "SELECT id, name, price, qte FROM produit";
+$result = mysqli_query($conn, $sql);
 
-
-if (mysqli_query($conn, $sql)) {
-  echo "New record created successfully";
+if (mysqli_num_rows($result) > 0) {
+  echo "<table border='1'>";
+  echo "<tr>";
+  echo "<th>ID</th>";
+  echo "<th>Name</th>";
+  echo "<th>Price</th>";
+  echo "<th>Quantity</th>";
+  echo "</tr>";
+  // Output data of each row
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo "<tr>";
+    echo "<td>" . $row["id"] . "</td>";
+    echo "<td>" . $row["name"] . "</td>";
+    echo "<td>" . $row["price"] . "</td>";
+    echo "<td>" . $row["qte"] . "</td>";
+    echo "</tr>";
+  }
+  echo "</table>";
 } else {
-  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  echo "0 results";
 }
 
 mysqli_close($conn);
 ?>
+</body>
+</html>
