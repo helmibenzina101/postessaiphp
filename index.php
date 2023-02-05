@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <head>
     <title>shopify</title>
+    <style>
+        h1 {
+      text-align: center;
+    }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        form input[type="text"], form input[type="number"] {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        form input[type="submit"] {
+            padding: 10px 20px;
+            background-color: lightblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: lightgray;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
+  
+<h1> shopify</h1>
 
 
 <form action="add.php" method="post">
 Name: <input type="text" name="name"><br>
-price: <input type="number" name="price"><br>
+price: <input type="text" name="price"><br>
 qte: <input type="number" name="qte"><br>
 <input type="submit">
 <?php
