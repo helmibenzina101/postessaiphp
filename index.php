@@ -52,9 +52,9 @@ h1 {
 
 
 <form action="add.php" method="post">
-Name: <input type="text" name="name"><br>
-price: <input type="text" name="price"><br>
-qte: <input type="number" name="qte"><br>
+Name: <input type="text" name="name" ><br>
+price: <input type="text" name="price" ><br>
+qte: <input type="number" name="qte""><br>
 <input type="submit">
 <?php
 $servername = "localhost";
@@ -84,21 +84,7 @@ if (isset($_GET['delete'])) {
  
 
 }
- //check if update button is clicked
- if (isset($_GET['update'])) {
-  $id = $_GET['update'];
 
-  // update the record with the specified ID
-  $sql = "SELECT * FROM produit WHERE id=$id";
-
-  if (mysqli_query($conn, $sql)) {
-    echo "Record deleted successfully";
-  } else {
-    echo "Error deleting record: " . mysqli_error($conn);
-  }
- 
-
-}
 $sql = "SELECT id, name, price, qte FROM produit";
 $result = mysqli_query($conn, $sql);
 
@@ -110,6 +96,7 @@ if (mysqli_num_rows($result) > 0) {
   echo "<th>Price</th>";
   echo "<th>Quantity</th>";
   echo "<th>Action</th>";
+  echo "<th>Action</th>";
   echo "</tr>";
   // Output data of each row
   while ($row = mysqli_fetch_assoc($result)) {
@@ -119,7 +106,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<td>" . $row["price"] . "</td>";
     echo "<td>" . $row["qte"] . "</td>";
     echo "<td><a href='?delete=" . $row["id"] . "'>Delete</a></td>";
-    echo "<td><a href='?update=" . $row["id"] . "'>Update</a></td>"
+    echo "<td><a href='update.php?id=" . $row["id"] . "'>Update</a></td>";
     echo "</tr>";
   }
   echo "</table>";
